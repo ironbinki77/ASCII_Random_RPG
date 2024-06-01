@@ -4,30 +4,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RPG Game</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title>ASCII_RPG</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <header>
-        <h1>RPG Game</h1>
+        <h1>ASCII_RPG</h1>
         <nav>
             <ul>
                 <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#enhance">Enhance</a></li>
+                <li><a href="#inventory">Inventory</a></li>
+                <li><a href="#quests">Quests</a></li>
             </ul>
         </nav>
     </header>
-    <div class="content">
-        <aside class="sidebar">
-            <!-- Sidebar content (e.g., character stats, inventory) -->
-        </aside>
-        <main class="game-area">
-            <!-- Main game content (e.g., game map, interactions) -->
-        </main>
+    <div class="game-container">
+        <div class="game-screen">
+            <!-- Main game screen where character moves and battles occur -->
+            <p>Main game screen. Use arrow keys to move the character.</p>
+        </div>
+        <div class="game-menu" id="shop">
+            <h2>Shop</h2>
+            <p>Welcome to the shop! Here you can buy various items.</p>
+            <!-- Additional shop content -->
+        </div>
+        <div class="game-menu" id="enhance">
+            <h2>Enhance Items</h2>
+            <p>Enhance your items to make them stronger.</p>
+            <!-- Additional enhance content -->
+        </div>
+        <div class="game-menu" id="inventory">
+            <h2>Inventory</h2>
+            <p>Here is your inventory. Manage your items.</p>
+            <!-- Additional inventory content -->
+        </div>
+        <div class="game-menu" id="quests">
+            <h2>Quests</h2>
+            <p>Check your quests and track your progress.</p>
+            <!-- Additional quests content -->
+        </div>
     </div>
     <footer>
         <p>&copy; 2024 RPG Game</p>
     </footer>
+
+    <script>
+        // JavaScript to toggle menu visibility
+        const menuItems = document.querySelectorAll('.game-menu');
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                menuItems.forEach(item => {
+                    item.style.display = item.id === targetId ? 'block' : 'none';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
