@@ -1,6 +1,6 @@
 import random
 
-class Monster:
+class monster:
     def __init__(self, name, level, health, attack, defense, gold, loot, dropRate):
         self.name = name
         self.level = level
