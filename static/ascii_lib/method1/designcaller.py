@@ -5,17 +5,45 @@ drawing_functions["house"]()
 """
 
 import random
-from testasciigen import Canvas  # Assuming testasciigen.py is in the same directory
+from testascii import Canvas
+
+class CanvasManager(Canvas):
+    def get_drawing_functions(self):
+        """Returns a dictionary mapping drawing function names to the functions themselves."""
+        return {
+            "horse": self.draw_horse,
+            "rabbit": self.draw_rabbit,
+            "house": self.draw_house,
+            "cat": self.draw_cat,
+            "dog": self.draw_dog,
+            "tree": self.draw_tree,
+            "car": self.draw_car,
+            "sun": self.draw_sun,
+            "cloud": self.draw_cloud,
+            "star": self.draw_star,
+            "heart": self.draw_heart,
+            "smiley": self.draw_smiley,
+            "fish": self.draw_fish,
+            "bird": self.draw_bird,
+            "butterfly": self.draw_butterfly,
+            "moon": self.draw_moon,
+            "mountain": self.draw_mountain,
+            "river": self.draw_river,
+            "boat": self.draw_boat,
+            "plane": self.draw_plane,
+            "flower": self.draw_flower,
+            "mushroom": self.draw_mushroom,
+        }
 
 if __name__ == "__main__":
-    canvas = Canvas()  # Create an instance of the Canvas class from testasciigen.py
-    drawing_functions = canvas.get_drawing_functions()
+    canvas_manager = CanvasManager()
+    drawing_functions = canvas_manager.get_drawing_functions()
 
     while True:
-        canvas.clear_canvas()
+        canvas_manager.clear_canvas()
 
         # Example 1: Draw all figures
-        # canvas.draw_all() 
+        # canvas_manager.draw_all() 
 
         # Example 2: Draw specific figures by name
         figures_to_draw = ["horse", "sun", "cloud"]
@@ -30,7 +58,7 @@ if __name__ == "__main__":
         # for figure in random_figures:
         #     drawing_functions[figure]()
 
-        canvas.render_canvas()
+        canvas_manager.render_canvas()
         input("Press Enter for new art, or type 'q' to quit: ")
         if input().lower() == 'q':
             break
