@@ -30,7 +30,7 @@ class monster:
         if random.random() < self.dropRate:
             return random.choice(self.loot)
         return None
-
+'''
 monster = Monster(
     name="Goblin",
     level=5,
@@ -57,3 +57,4 @@ if monster.isDefeated():
         print(f"Dropped item: {loot.name}")
     else:
         print("No item dropped.")
+'''

@@ -1,0 +1,23 @@
+<!-- main_app/templates/main_app/battle.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Battle</title>
+</head>
+<body>
+    <div id="message">{{ message }}</div>
+
+    {% if show_menu %}
+    <div id="battle-menu">
+        <form method="post" action="{% url 'battle_view' %}">
+            {% csrf_token %}
+            <button type="submit" name="action" value="attack">Attack</button>
+            <button type="submit" name="action" value="defend">Defend</button>
+            <button type="submit" name="action" value="item">Item</button>
+            <button type="submit" name="action" value="run">Run</button>
+        </form>
+    </div>
+    {% endif %}
+</body>
+</html>
