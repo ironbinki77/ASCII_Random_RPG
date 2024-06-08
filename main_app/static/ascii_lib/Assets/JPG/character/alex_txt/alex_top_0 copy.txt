@@ -1,0 +1,41 @@
+                     ddddddddddddddddddd                        
+                   ddk   000000000KKKK0 xd                      
+                  dk KXXXK0  0000KXXXNXX0 xd                    
+                dk KXXXK0KKXXXXXXK0KXXNNXX0kxd                  
+                x 0XNXX0 0XNXXNNNXKK0KXNNNK kd                  
+              dk KKXNXXK 0XNNNNNNNNXKKKKXNXK0kxd                
+              x KXXXXKKKKXNNNNNNNXXXXK0 KXXNK0kd                
+              x 0XXNX0 KNNNNXXXXXXXXKK0 KXXXK kd                
+              x 0XXNX0 KNNNXXXXXXXXKKK00XXXXK kd                
+              x 0KXXXK0KXXXXXXXKKKK0 0KXXXXXK0kd                
+              x 0KKKXXXK 0KXXKKKKKK000XXXXXXK kd                
+              x 0KKKKKK000KKKKKKK000KKXXKKKKK kd                
+              x 0KKKKKKKK000KKKKK0 0KKKKKKKK0 kd                
+              ddk 0KKKKKK0  KXKKX0 0KKKKKKK0 xd                 
+                ddx 000000  KKKKK0 0000000kxd                   
+                   xxxxxxk  KKKKK0 kxxxxxxd                     
+                dxxkxxxxxx 0KKKKK0 kxxxxxkxxx                   
+              dxkKXXKKK0   0KKKKX0    0KKXXX0xx                 
+              k0XNNNNNNX0000KKKKK0 00KNNNWNNXK d                
+              k0KXNNNNNNNNNXK0KKK00KNNNNNNNXK0 d                
+              dxk KXNXXXXXXXXK   0XXXXXXNN0kxxx                 
+              ddk  kx ccllcc:;;;;:cllccldkxdxdd                 
+              ddx  xdc;;;;;,'..''',;;;;;l   dd                  
+              ddx kx :''',;,'....';,''',;:l                     
+               dxkxd c;;:;'''....'',;:;;:c:cl                   
+                 lllll   c;,'....';:l ll lc;:l                  
+                c;:lllll  ll;,,;;:lllll   c;:                   
+                l::ccllll lll llllllll   dl:c                   
+                  l::cll    ll        ddc:cl                    
+                   lc:;lddd :: ddxxxxdc:c                       
+                  l,',;cddd :;::c k  x:;c                       
+                  c,.'',:cc:;;;;;:cccc;;,,c                     
+                lc:,,'.''''';;;;;;;;;;,'..,:c                   
+            c:cc:;;;;,'''',,;;;;;,,'''..',,;;ccccl              
+           l:;;;;;;;;;;;;;;;;;;;;,''''',,;;;;;;;;c              
+            c::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;:c:cl              
+                l::::;;;;;;;;;;;;;;;;;;;::::cl                  
+                    lc:;:::::::::::;;:::l                       
+                      ll                                        
+                                                                
+
