@@ -1,10 +1,11 @@
 import json
 
-class Item:
-    def __init__(self, name, description, item_type, stats=None, boosts=None, isEquipped=False, enhancementLevel=0, buyPrice=0, sellPrice=0):
+class Items:
+    def __init__(self, item_code, name, description, item_type, stats=None, boosts=None, isEquipped=False, enhancementLevel=0, buyPrice=0, sellPrice=0):
+        self.item_code = item_code
         self.name = name
         self.description = description
-        self.item_type = item_type  # Avoid using 'type' as it's a built-in name
+        self.item_type = item_type
         self.stats = stats if stats else {'healthPower': 0, 'manaPower': 0, 'strengthPower': 0, 'dexterityPower': 0, 'intelligencePower': 0, 'defensePower': 0, 'luckPower': 0}
         self.boosts = boosts if boosts else {'healthBoost': 0, 'manaBoost': 0}
         self.isEquipped = isEquipped
@@ -14,12 +15,7 @@ class Item:
 
     def use(self, character):
         if self.item_type == "Consumable":
-            character.health += self.boosts['healthBoost']
-            if character.health > character.maxHealth:
-                character.health = character.maxHealth
-            character.mana += self.boosts['manaBoost']
-            if character.mana > character.maxMana:
-                character.mana = character.maxMana
+            character.apply_boosts(self.boosts)
             return True
         return False
 
@@ -44,6 +40,7 @@ class ItemDatabase:
             items = {}
             for item_code, item_data in data.items():
                 item = Item(
+                    item_code=int(item_code),
                     name=item_data['name'],
                     description=item_data['description'],
                     item_type=item_data['type'],
@@ -68,4 +65,3 @@ class ItemDatabase:
 
     def get_item(self, item_code):
         return self.items.get(item_code, None)
-

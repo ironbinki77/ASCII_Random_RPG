@@ -2,7 +2,7 @@ import json
 from Item import Item
 
 class ItemDatabase:
-    def __init__(self, filename='Itemlist.json'):
+    def __init__(self, filename='items.json'):
         self.filename = filename
         self.items = self.load_items()
 

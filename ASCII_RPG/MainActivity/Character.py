@@ -1,3 +1,5 @@
+from Inventory import Inventory
+
 class Character:
     def __init__(self, name, level=1, gold=0, currentXp=0, xpToNextLevel=100, health=100, maxHealth=100, mana=50, maxMana=50, strength=10, dexterity=10, intelligence=10, defense=10, luck=5):
         self.name = name
@@ -15,9 +17,7 @@ class Character:
         self.defense = defense
         self.luck = luck
         self.skills = []
-        self.inventory = []
-        self.equipment = []
-        self.kills = {}  # Dictionary to track monster kills
+        self.inventory = Inventory()
 
     def gainXp(self, amount):
         self.currentXp += amount
@@ -27,7 +27,7 @@ class Character:
     def levelUp(self):
         self.level += 1
         self.currentXp -= self.xpToNextLevel
-        self.xpToNextLevel = int(self.xpToNextLevel * 1.5)  # Example: Increase XP needed for next level
+        self.xpToNextLevel = int(self.xpToNextLevel * 1.5)
         self.maxHealth += 10
         self.health = self.maxHealth
         self.maxMana += 5
@@ -42,11 +42,18 @@ class Character:
         return self.kills.get(monster_code, 0)
 
     def get_item_count(self, item_code):
-        return sum(1 for item in self.inventory if item.name == item_code)
+        return self.inventory.get_item_count(item_code)
 
     def addItemToInventory(self, item):
-        self.inventory.append(item)
+        self.inventory.add_item(item.item_code)
 
     def removeItemFromInventory(self, item):
-        if item in self.inventory:
-            self.inventory.remove(item)
+        self.inventory.remove_item(item.item_code)
+
+    def apply_boosts(self, boosts):
+        self.health += boosts['healthBoost']
+        if self.health > self.maxHealth:
+            self.health = self.maxHealth
+        self.mana += boosts['manaBoost']
+        if self.mana > self.maxMana:
+            self.mana = self.maxMana

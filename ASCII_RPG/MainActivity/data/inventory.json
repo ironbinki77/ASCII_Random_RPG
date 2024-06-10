@@ -21,18 +21,18 @@
         "name": "Dragon Slayer",
         "description": "Defeat the mighty dragon that terrorizes the kingdom.",
         "requirements": ["MonsterKill", "dragon", 1],
-        "reward": [500, 150, [("sword_of_fire", 1), ("healing_potion", 5)]]
+        "reward": [500, 150, [[7, 1], [14, 5]]]
     },
     "5": {
         "name": "The Lost Artifact",
         "description": "Find the ancient artifact lost in the old ruins.",
         "requirements": ["ItemCollected", "ancient_artifact", 1],
-        "reward": [300, 100, [("gold_coin", 100), ("mana_potion", 2)]]
+        "reward": [300, 100, [[19, 100], [14, 2]]]
     },
     "6": {
         "name": "A Hero's Journey",
         "description": "Prove your worth by completing the trials of the ancients.",
-        "requirements": ["Story"],
-        "reward": [1000, 500, [("hero_medal", 1)]]
+        "requirements": ["Story", 0, 0],
+        "reward": [1000, 500, [[20, 1]]]
     }
 }

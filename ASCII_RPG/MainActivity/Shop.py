@@ -1,55 +1,40 @@
+from Item import ItemDatabase
 from Character import Character
-from Item import Item
 
 class Shop:
-    def __init__(self, character):
-        self.character = character
-        self.inventory = self.initialize_inventory(character.level)
+    def __init__(self, item_database, inventory_file='inventory.json'):
+        self.item_database = item_database
+        self.inventory = Inventory(filename=inventory_file)
 
-    def initialize_inventory(self, level):
-        inventory = []
-        if level <= 10:
-            inventory.extend([
-                Item(name="Basic Sword", description="A simple sword", type="Weapon", strengthPower=5, buyPrice=10, sellPrice=5),
-                Item(name="Basic Shield", description="A simple shield", type="Armor", defensePower=5, buyPrice=15, sellPrice=7.5)
-            ])
-        elif 10 < level <= 20:
-            inventory.extend([
-                Item(name="Advanced Sword", description="A better sword", type="Weapon", strengthPower=10, buyPrice=30, sellPrice=15),
-                Item(name="Advanced Shield", description="A better shield", type="Armor", defensePower=10, buyPrice=35, sellPrice=17.5)
-            ])
-        elif 20 < level <= 40:
-            inventory.extend([
-                Item(name="Expert Sword", description="A high-quality sword", type="Weapon", strengthPower=15, buyPrice=50, sellPrice=25),
-                Item(name="Expert Shield", description="A high-quality shield", type="Armor", defensePower=15, buyPrice=55, sellPrice=27.5),
-                Item(name="Magic Wand", description="A wand for casting spells", type="Weapon", intelligencePower=20, buyPrice=60, sellPrice=30)
-            ])
-        # Add more conditions as needed
-        return inventory
-
-    def buy_item(self, item_name):
-        item = next((i for i in self.inventory if i.name == item_name), None)
-        if item and self.character.gold >= item.buyPrice:
-            self.character.addItemToInventory(item)
-            self.character.gold -= item.buyPrice
-            self.inventory.remove(item)
-            print(f"Bought {item.name} for {item.buyPrice} gold.")
+    def buy_item(self, character, item_code):
+        item = self.item_database.get_item(item_code)
+        if item and character.gold >= item.buyPrice:
+            character.gold -= item.buyPrice
+            character.addItemToInventory(item)
+            print(f"{character.name} bought {item.name} for {item.buyPrice} gold.")
         else:
-            print("Cannot buy the item.")
+            print(f"{character.name} does not have enough gold to buy {item.name}.")
 
-    def sell_item(self, item_name):
-        item = next((i for i in self.character.inventory if i.name == item_name), None)
-        if item:
-            self.character.removeItemFromInventory(item)
-            self.character.gold += item.sellPrice
-            print(f"Sold {item.name} for {item.sellPrice} gold.")
+    def sell_item(self, character, item_code):
+        item = self.item_database.get_item(item_code)
+        if item and character.get_item_count(item_code) > 0:
+            character.gold += item.sellPrice
+            character.removeItemFromInventory(item)
+            print(f"{character.name} sold {item.name} for {item.sellPrice} gold.")
         else:
-            print("Cannot sell the item.")
+            print(f"{character.name} does not have {item.name} in inventory to sell.")
 
-# Example usage
-character = Character(name="Hero", level=15, gold=100)
-shop = Shop(character)
+if __name__ == "__main__":
+    item_db = ItemDatabase('items.json')
+    shop = Shop(item_db, 'inventory.json')
 
-# Assuming the character tries to buy and sell an item by name
-shop.buy_item("Basic Sword")
-shop.sell_item("Basic Sword")
+    # Initialize character
+    character = Character(name="Hero", gold=100)
+
+    # Buy and sell items
+    shop.buy_item(character, 1)  # Attempt to buy Basic Sword
+    shop.sell_item(character, 1)  # Attempt to sell Basic Sword
+
+    # Check character's gold and inventory
+    print(f"{character.name} has {character.gold} gold.")
+    print(f"{character.name}'s inventory: {character.inventory.list_items()}")
