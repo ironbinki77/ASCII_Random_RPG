@@ -22,17 +22,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     });
 
-    homeLink.addEventListener('click', () => {
-        menuItems.forEach(item => {
-            item.style.display = 'none';
-        });
-        menuActive = false;
-        if (animationFrameId === null) {
-            animationFrameId = requestAnimationFrame(updateMapPosition);
-        }
-    });
-
-    function isMenuActive() {
-        return menuActive;
-    }
+    // Other functions related to menu handling...
 });

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASCII_RPG</title>
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="tmpstyle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -15,10 +15,10 @@
         <nav>
             <ul>
                 <li><a href="#" id="home">Home</a></li>
-                <li><a href="#shop">Shop</a></li>
-                <li><a href="#enhance">Enhance</a></li>
-                <li><a href="#inventory">Inventory</a></li>
-                <li><a href="#quests">Quests</a></li>
+                <li><a href="#shop" id="shop-link">Shop</a></li>
+                <li><a href="#enhance" id="enhance-link">Enhance</a></li>
+                <li><a href="#inventory" id="inventory-link">Inventory</a></li>
+                <li><a href="#quests" id="quests-link">Quests</a></li>
             </ul>
         </nav>
     </header>
@@ -70,6 +70,7 @@
         <div class="game-menu" id="quests">
             <h2>Quests</h2>
             <p>Check your quests and track your progress.</p>
+            <ul id="quest-list"></ul>
         </div>
         <div class="controls">
             <p>Arrow Keys: Move / Space Key: Close Window</p>
@@ -78,11 +79,11 @@
     <footer>
         <p>&copy; 2024 RPG Game</p>
     </footer>
-    <script src="static/js/menu.js"></script>
-    <script src="static/js/map.js"></script>
-    <script src="static/js/character.js"></script>
-    <script src="static/js/shop.js"></script>
-    <script src="static/js/inventory.js"></script>
-    <script src="static/js/enhance.js"></script>
+    <script src="menu.js"></script>
+    <script src="map.js"></script>
+    <script src="character.js"></script>
+    <script src="shop.js"></script>
+    <script src="inventory.js"></script>
+    <script src="enhance.js"></script>
 </body>
 </html>
