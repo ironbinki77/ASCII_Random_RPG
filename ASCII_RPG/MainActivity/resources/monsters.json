@@ -11,7 +11,7 @@
     "rate": 0.1
   },
   "2": {
-    "name": "Goblin",
+    "name": "Crab",
     "level": 4,
     "hp": 35,
     "max_hp": 35,
@@ -22,7 +22,7 @@
     "rate": 0.12
   },
   "3": {
-    "name": "Wolf",
+    "name": "Wing",
     "level": 5,
     "hp": 40,
     "max_hp": 40,
@@ -33,7 +33,7 @@
     "rate": 0.15
   },
   "4": {
-    "name": "Skeleton",
+    "name": "Amoeba",
     "level": 6,
     "hp": 38,
     "max_hp": 38,
