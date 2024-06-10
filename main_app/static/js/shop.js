@@ -1,32 +1,3 @@
-class Skill:
-    def __init__(self, name, description, manaCost, effectType, effectAmount, cooldown):
-        self.name = name
-        self.description = description
-        self.manaCost = manaCost
-        self.effectType = effectType
-        self.effectAmount = effectAmount
-        self.currentCooldown = 0
-        self.cooldown = cooldown
-
-    def use(self, character):
-        if self.isAvailable() and character.useMana(self.manaCost):
-            self.currentCooldown = self.cooldown
-            if self.effectType == "damage":
-                return self.effectAmount
-            elif self.effectType == "heal":
-                character.health += self.effectAmount
-                if character.health > character.maxHealth:
-                    character.health = character.maxHealth
-            return True
-        return False
-
-    def isAvailable(self):
-        return self.currentCooldown == 0
-
-    def reduceCooldown(self):
-        if self.currentCooldown > 0:
-            self.currentCooldown -= 1
-
 document.addEventListener('DOMContentLoaded', (event) => {
     const items = {
         "1": {
@@ -36,7 +7,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "strengthPower": 3,
             "buyPrice": 8,
             "sellPrice": 4,
-            "image": "sample.png"
+            "image": "{% static 'images/racket.png' %}"
         },
         "2": {
             "name": "Mask",
@@ -45,7 +16,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "defensePower": 3,
             "buyPrice": 10,
             "sellPrice": 5,
-            "image": "sample.png"
+            "image": "{% static 'images/mask.png' %}"
         },
         "3": {
             "name": "Potion",
@@ -54,7 +25,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "healthBoost": 20,
             "buyPrice": 5,
             "sellPrice": 2.5,
-            "image": "sample.png"
+            "image": "{% static 'images/potion.png' %}"
         },
         "4": {
             "name": "Shield",
@@ -63,7 +34,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "defensePower": 10,
             "buyPrice": 35,
             "sellPrice": 17.5,
-            "image": "sample.png"
+            "image": "{% static 'images/shield.png' %}"
         },
         "5": {
             "name": "Sword",
@@ -72,7 +43,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "strengthPower": 15,
             "buyPrice": 50,
             "sellPrice": 25,
-            "image": "sample.png"
+            "image": "{% static 'images/sword.png' %}"
         },
         "6": {
             "name": "Bowl",
@@ -81,7 +52,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "defensePower": 15,
             "buyPrice": 55,
             "sellPrice": 27.5,
-            "image": "sample.png"
+            "image": "{% static 'images/bowl.png' %}"
         },
         "7": {
             "name": "Fish",
@@ -90,7 +61,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "intelligencePower": 20,
             "buyPrice": 60,
             "sellPrice": 30,
-            "image": "sample.png"
+            "image": "{% static 'images/fish.png' %}"
         },
         "8": {
             "name": "Long Sword",
@@ -99,7 +70,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "intelligencePower": 10,
             "buyPrice": 40,
             "sellPrice": 20,
-            "image": "sample.png"
+            "image": "{% static 'images/longsword.png' %}"
         },
         "9": {
             "name": "Bow",
@@ -108,7 +79,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "strengthPower": 8,
             "buyPrice": 25,
             "sellPrice": 12.5,
-            "image": "sample.png"
+            "image": "{% static 'images/bow.png' %}"
         },
         "10": {
             "name": "Fruit",
@@ -117,7 +88,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "defensePower": 12,
             "buyPrice": 40,
             "sellPrice": 20,
-            "image": "sample.png"
+            "image": "{% static 'images/fruit.png' %}"
         }
     };
 
