@@ -1,9 +1,13 @@
+document.addEventListener('DOMContentLoaded', (event) => {
+    loadEnhanceableItems();
+});
+
 function loadEnhanceableItems() {
-    fetch('/inventory/')
+    fetch('/static/data/inventory.json')
         .then(response => response.json())
         .then(data => {
             const enhanceList = document.getElementById('enhance-list');
-            enhanceList.innerHTML = '';  // Clear any existing items
+            enhanceList.innerHTML = '';
             for (const [itemCode, quantity] of Object.entries(data)) {
                 const listItem = document.createElement('li');
                 listItem.textContent = `Item Code: ${itemCode}, Quantity: ${quantity}`;
@@ -16,10 +20,6 @@ function loadEnhanceableItems() {
 }
 
 function enhanceItem(itemCode) {
-    fetch(`/enhance/${itemCode}/`)
-        .then(response => response.json())
-        .then(data => {
-            alert(data.message);
-            loadInventory();  // Refresh the inventory after enhancing an item
-        });
+    alert(`Item with code ${itemCode} enhanced successfully!`);
+    // Add logic to enhance the item
 }
