@@ -238,6 +238,27 @@ footer {
     height: 50px; /* Adjust the height as needed */
 }
 
+#enhance-list {
+    list-style: none;
+    padding: 0;
+}
+
+#enhance-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#enhance-list img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+#enhance-list div {
+    display: flex;
+    flex-direction: column;
+}
 
 /* Media Queries */
 @media (max-width: 768px) {

@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "strengthPower": 3,
             "buyPrice": 8,
             "sellPrice": 4,
-            "image": "{% static 'images/racket.png' %}"
+            "image": "{% static 'ascii_lib/itemracket.png' %}"
         },
         "2": {
             "name": "Mask",
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "defensePower": 3,
             "buyPrice": 10,
             "sellPrice": 5,
-            "image": "{% static 'images/mask.png' %}"
+            "image": "{% static 'ascii_lib/itemmask.png' %}"
         },
         "3": {
             "name": "Potion",
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "healthBoost": 20,
             "buyPrice": 5,
             "sellPrice": 2.5,
-            "image": "{% static 'images/potion.png' %}"
+            "image": "{% static 'ascii_lib/itempotion.png' %}"
         },
         "4": {
             "name": "Shield",
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "defensePower": 10,
             "buyPrice": 35,
             "sellPrice": 17.5,
-            "image": "{% static 'images/shield.png' %}"
+            "image": "{% static 'ascii_lib/itemshield.png' %}"
         },
         "5": {
             "name": "Sword",
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "strengthPower": 15,
             "buyPrice": 50,
             "sellPrice": 25,
-            "image": "{% static 'images/sword.png' %}"
+            "image": "{% static 'ascii_lib/itemsword.png' %}"
         },
         "6": {
             "name": "Bowl",
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "defensePower": 15,
             "buyPrice": 55,
             "sellPrice": 27.5,
-            "image": "{% static 'images/bowl.png' %}"
+            "image": "{% static 'ascii_lib/itembowl.png' %}"
         },
         "7": {
             "name": "Fish",
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "intelligencePower": 20,
             "buyPrice": 60,
             "sellPrice": 30,
-            "image": "{% static 'images/fish.png' %}"
+            "image": "{% static 'ascii_lib/itemfish.png' %}"
         },
         "8": {
             "name": "Long Sword",
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "intelligencePower": 10,
             "buyPrice": 40,
             "sellPrice": 20,
-            "image": "{% static 'images/longsword.png' %}"
+            "image": "{% static 'ascii_lib/itemlongsword.png' %}"
         },
         "9": {
             "name": "Bow",
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "strengthPower": 8,
             "buyPrice": 25,
             "sellPrice": 12.5,
-            "image": "{% static 'images/bow.png' %}"
+            "image": "{% static 'ascii_lib/itembow.png' %}"
         },
         "10": {
             "name": "Fruit",
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             "defensePower": 12,
             "buyPrice": 40,
             "sellPrice": 20,
-            "image": "{% static 'images/fruit.png' %}"
+            "image": "{% static 'ascii_lib/itemfruit.png' %}"
         }
     };
 

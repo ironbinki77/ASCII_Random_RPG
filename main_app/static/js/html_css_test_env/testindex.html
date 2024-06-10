@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII_RPG</title>
+    <link rel="stylesheet" href="tmpstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h2>ASCII_RPG</h2>
+        <nav>
+            <ul>
+                <li><a href="#" id="home">Home</a></li>
+                <li><a href="#shop" id="shop-link">Shop</a></li>
+                <li><a href="#enhance" id="enhance-link">Enhance</a></li>
+                <li><a href="#inventory" id="inventory-link">Inventory</a></li>
+                <li><a href="#quests" id="quests-link">Quests</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="game-container">
+        <div class="game-screen">
+            <div id="village-map" class="game-map">
+                <div id="boundary"></div>
+                <div id="house" class="block" style="top: -120px; left: -530px;"></div>
+                <div id="shop_npc" class="npc block" style="top: 110px; left: -400px;"></div>
+                <div id="blacksmith" class="npc block" style="top: 20px; left: 450px;"></div>
+                <div id="portal" class="dungeon-portal" style="top: -320px; left: -40px;"></div>
+                <div id="guard" class="npc block" style="top: -220px; left: -140px;"></div>
+                <div id="guard" class="npc block" style="top: -220px; left: 140px;"></div>
+            </div>
+            <div id="character"></div>
+            <div id="dungeon-map" class="game-map" style="display:none;">
+                <div id="portal" class="dungeon-portal" style="top: -200px; left: 0px;"></div>
+            </div>
+            <div class="status-bars">
+                <div class="status-bar">
+                    <span class="status-label">HP:</span>
+                    <div class="health-bar">
+                        <div class="health-fill"></div>
+                    </div>
+                </div>
+                <div class="status-bar">
+                    <span class="status-label">MP:</span>
+                    <div class="mana-bar">
+                        <div class="mana-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="game-menu" id="shop">
+            <h2>Shop</h2>
+            <p>Welcome to the shop! Here you can buy various items.</p>
+            <ul id="shop-list"></ul>
+        </div>
+        <div class="game-menu" id="enhance">
+            <h2>Enhance Items</h2>
+            <p>Enhance your items to make them stronger.</p>
+            <ul id="enhance-list"></ul>
+        </div>
+        <div class="game-menu" id="inventory">
+            <h2>Inventory</h2>
+            <p>Here is your inventory. Manage your items.</p>
+            <ul id="inventory-list"></ul>
+        </div>
+        <div class="game-menu" id="quests">
+            <h2>Quests</h2>
+            <p>Check your quests and track your progress.</p>
+            <ul id="quest-list"></ul>
+        </div>
+        <div class="controls">
+            <p>Arrow Keys: Move / Space Key: Close Window</p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 RPG Game</p>
+    </footer>
+    <script src="menu.js"></script>
+    <script src="map.js"></script>
+    <script src="character.js"></script>
+    <script src="shop.js"></script>
+    <script src="inventory.js"></script>
+    <script src="enhance.js"></script>
+</body>
+</html>
