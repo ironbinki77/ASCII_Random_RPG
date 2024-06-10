@@ -1,0 +1,153 @@
+{
+    "1": {
+        "name": "Basic Sword",
+        "description": "A simple sword for beginners.",
+        "type": "Weapon",
+        "strengthPower": 3,
+        "buyPrice": 8,
+        "sellPrice": 4
+    },
+    "2": {
+        "name": "Basic Shield",
+        "description": "A simple shield for basic protection.",
+        "type": "Armor",
+        "defensePower": 3,
+        "buyPrice": 10,
+        "sellPrice": 5
+    },
+    "3": {
+        "name": "Healing Potion",
+        "description": "A potion that restores a small amount of health.",
+        "type": "Consumable",
+        "healthBoost": 20,
+        "buyPrice": 5,
+        "sellPrice": 2.5
+    },
+    "4": {
+        "name": "Advanced Shield",
+        "description": "A better shield",
+        "type": "Armor",
+        "defensePower": 10,
+        "buyPrice": 35,
+        "sellPrice": 17.5
+    },
+    "5": {
+        "name": "Expert Sword",
+        "description": "A high-quality sword",
+        "type": "Weapon",
+        "strengthPower": 15,
+        "buyPrice": 50,
+        "sellPrice": 25
+    },
+    "6": {
+        "name": "Expert Shield",
+        "description": "A high-quality shield",
+        "type": "Armor",
+        "defensePower": 15,
+        "buyPrice": 55,
+        "sellPrice": 27.5
+    },
+    "7": {
+        "name": "Magic Wand",
+        "description": "A wand for casting spells",
+        "type": "Weapon",
+        "intelligencePower": 20,
+        "buyPrice": 60,
+        "sellPrice": 30
+    },
+    "8": {
+        "name": "Healer's Staff",
+        "description": "A staff that boosts healing spells",
+        "type": "Weapon",
+        "intelligencePower": 10,
+        "buyPrice": 40,
+        "sellPrice": 20
+    },
+    "9": {
+        "name": "Thief's Dagger",
+        "description": "A sharp dagger preferred by rogues",
+        "type": "Weapon",
+        "strengthPower": 8,
+        "buyPrice": 25,
+        "sellPrice": 12.5
+    },
+    "10": {
+        "name": "Warrior's Helm",
+        "description": "A sturdy helm for battle",
+        "type": "Armor",
+        "defensePower": 12,
+        "buyPrice": 40,
+        "sellPrice": 20
+    },
+    "11": {
+        "name": "Wizard's Robe",
+        "description": "A robe that enhances magical ability",
+        "type": "Armor",
+        "intelligencePower": 15,
+        "buyPrice": 45,
+        "sellPrice": 22.5
+    },
+    "12": {
+        "name": "Ranger's Bow",
+        "description": "A bow with excellent range",
+        "type": "Weapon",
+        "strengthPower": 12,
+        "buyPrice": 35,
+        "sellPrice": 17.5
+    },
+    "13": {
+        "name": "Druid's Cloak",
+        "description": "A cloak that blends with the forest",
+        "type": "Armor",
+        "defensePower": 8,
+        "buyPrice": 30,
+        "sellPrice": 15
+    },
+    "14": {
+        "name": "Fireball Scroll",
+        "description": "A scroll that casts a powerful fireball",
+        "type": "Consumable",
+        "intelligencePower": 25,
+        "buyPrice": 50,
+        "sellPrice": 25
+    },
+    "15": {
+        "name": "Ice Shard Amulet",
+        "description": "An amulet that protects against cold",
+        "type": "Accessory",
+        "defensePower": 5,
+        "buyPrice": 20,
+        "sellPrice": 10
+    },
+    "16": {
+        "name": "Ring of Strength",
+        "description": "A ring that increases physical power",
+        "type": "Accessory",
+        "strengthPower": 5,
+        "buyPrice": 25,
+        "sellPrice": 12.5
+    },
+    "17": {
+        "name": "Boots of Speed",
+        "description": "Boots that increase movement speed",
+        "type": "Armor",
+        "defensePower": 3,
+        "buyPrice": 30,
+        "sellPrice": 15
+    },
+    "18": {
+        "name": "Potion of Invisibility",
+        "description": "A potion that grants temporary invisibility",
+        "type": "Consumable",
+        "buyPrice": 45,
+        "sellPrice": 22.5
+    },
+    "19": {
+        "name": "Enchanted Shield",
+        "description": "A shield imbued with magic",
+        "type": "Armor",
+        "defensePower": 20,
+        "buyPrice": 60,
+        "sellPrice": 30
+    }
+}
