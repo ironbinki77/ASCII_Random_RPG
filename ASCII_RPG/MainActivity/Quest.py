@@ -1,12 +1,48 @@
-class Quest():
-    def __init__(self, questNum):
-    # 미리 정해져 있는 .json 파일 혹은 퀘스트 DB에서 퀘스트 데이터를 불러 와 각 변수에 대입하는 방식으로 진행. 아래는 데이터 대입 시를 예시로 만든 데이터.
-        self.name = "Temp Quest: Kill Slimes" # String 타입
-        self.description = "Temp Quest Description: Kill 10 Slimes" # String 타입
-        self.requirements = ["MonsterKill", 1, 10] # 첫 번째 값은 타입("MonsterKill", "ItemCollected" 등, "Story"일 시 스토리 퀘스트로 판정 및 모든 값 0), 두 번째 값은 개체 코드(몬스터, 아이템 등의 식별 코드), 세 번째 값은 개수
-        self.reward = [10, 100, [1, 1]] # 첫 번째 값은 경험치, 두 번째는 골드, 세 번째 이후로는 아이템 코드에 맞춘 아이템 배분 - 없을 시 아이템 X
-        self.isCompleted = False # 성공 시 True로 변경.
+import json
 
-    def checkComplete(character):
-        # requirements에 character의 Inventory, Money, EXP 등 이 중 특정 조건이 만족되었는지 확인한 후, Quest를 완료시킨다. 아닐 경우, 아니라고 Return한다(아마 0으로 Return하면 될 듯).
-        return
+class Quest:
+    def __init__(self, questNum, item_database):
+        self.item_database = item_database
+        self.isCompleted = False
+        self.load_quest_data(questNum)
+
+    def load_quest_data(self, questNum):
+        # Load quest data from a JSON file
+        with open('quests.json', 'r', encoding='utf-8') as file:
+            quests = json.load(file)
+            quest_data = quests[str(questNum)]
+
+        self.name = quest_data['name']
+        self.description = quest_data['description']
+        self.requirements = quest_data['requirements']
+        self.reward = quest_data['reward']
+
+    def check_complete(self, character):
+        req_type, req_code, req_amount = self.requirements
+        if req_type == "MonsterKill":
+            if character.get_kills(req_code) >= req_amount:
+                self.complete_quest(character)
+                return True
+        elif req_type == "ItemCollected":
+            if character.get_item_count(req_code) >= req_amount:
+                self.complete_quest(character)
+                return True
+        elif req_type == "Story":
+            self.complete_quest(character)
+            return True
+        return False
+
+    def complete_quest(self, character):
+        if not self.isCompleted:
+            exp_reward, gold_reward, item_rewards = self.reward
+            character.gainXp(exp_reward)
+            character.gold += gold_reward
+            for item_code, quantity in item_rewards:
+                for _ in range(quantity):
+                    item = self.item_database.get_item(item_code)
+                    if item:
+                        character.addItemToInventory(item)
+            self.isCompleted = True
+            print(f"Quest '{self.name}' completed!")
+        else:
+            print(f"Quest '{self.name}' is already completed.")

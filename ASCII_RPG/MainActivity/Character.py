@@ -17,6 +17,7 @@ class Character:
         self.skills = []
         self.inventory = []
         self.equipment = []
+        self.kills = {}  # Dictionary to track monster kills
 
     def gainXp(self, amount):
         self.currentXp += amount
@@ -37,30 +38,11 @@ class Character:
         self.defense += 2
         self.luck += 1
 
-    def takeDamage(self, amount):
-        self.health -= amount
-        if self.health < 0:
-            self.health = 0
+    def get_kills(self, monster_code):
+        return self.kills.get(monster_code, 0)
 
-    def useMana(self, amount):
-        if self.mana >= amount:
-            self.mana -= amount
-            return True
-        else:
-            return False
-
-    def learnSkill(self, skill):
-        self.skills.append(skill)
-
-    def equipItem(self, item):
-        if not item.isEquipped:
-            self.equipment.append(item)
-            item.isEquipped = True
-
-    def unequipItem(self, item):
-        if item in self.equipment:
-            self.equipment.remove(item)
-            item.isEquipped = False
+    def get_item_count(self, item_code):
+        return sum(1 for item in self.inventory if item.name == item_code)
 
     def addItemToInventory(self, item):
         self.inventory.append(item)

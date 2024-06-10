@@ -18,7 +18,7 @@ class Item:
         self.sellPrice = sellPrice
 
     def use(self, character):
-        if self.type == "소모품":
+        if self.type == "Consumable":
             character.health += self.healthBoost
             if character.health > character.maxHealth:
                 character.health = character.maxHealth
