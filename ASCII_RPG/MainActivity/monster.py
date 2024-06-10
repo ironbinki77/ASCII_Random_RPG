@@ -1,22 +1,25 @@
 import random
 
+from ASCII_RPG.MainActivity.Character import Character
+
+
 class monster:
-    def __init__(self, name, level, health, attack, defense, gold, loot, dropRate):
+    def __init__(self, name, level, health, attack, defense, gold, loots, dropRate):
         self.name = name
         self.level = level
         self.health = health
         self.attack = attack
         self.defense = defense
         self.gold = gold
-        self.loot = loot
+        self.loot = loots
         self.dropRate = dropRate
 
-    def attack(self, character):
-        damage = self.attack - character.defense
+    def attack(self, characters):
+        damage = self.attack - characters.defense
         if damage > 0:
-            character.takeDamage(damage)
+            characters.takeDamage(damage)
         else:
-            character.takeDamage(1)  # 최소 데미지 1
+            characters.takeDamage(1)  # 최소 데미지 1
 
     def takeDamage(self, amount):
         self.health -= amount
@@ -31,28 +34,38 @@ class monster:
             return random.choice(self.loot)
         return None
 
-monster = Monster(
-    name="Goblin",
-    level=5,
-    health=50,
-    attack=12,
-    defense=5,
-    gold=10,
-    loot=[item1, item2], 
-    dropRate=0.5  
+
+class Monster:
+    def __init__(self):
+        self.name = None
+
+    def attack(self, characters):
+        pass
+
+    def takeDamage(self, param):
+        pass
+
+    def isDefeated(self):
+        pass
+
+    def dropLoot(self):
+        pass
+
+
+Monsters = Monster(
 )
 
 character = Character(name="Hero")  
 
-monster.attack(character)
+Monsters.attack(character)
 
 
-monster.takeDamage(20)
+Monsters.takeDamage(20)
 
 
-if monster.isDefeated():
-    print(f"{monster.name} is defeated!")
-    loot = monster.dropLoot()
+if Monsters.isDefeated():
+    print(f"{Monsters.name} is defeated!")
+    loot = Monsters.dropLoot()
     if loot:
         print(f"Dropped item: {loot.name}")
     else:

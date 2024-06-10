@@ -1,7 +1,12 @@
 import json
 
+
 class Quest:
     def __init__(self, questNum, item_database, character):
+        self.reward = None
+        self.requirements = None
+        self.description = None
+        self.name = None
         self.item_database = item_database
         self.character = character
         self.isCompleted = False

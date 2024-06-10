@@ -1,7 +1,5 @@
 import json
-from .Character import Character
-from .Inventory import Inventory
-from .Item import ItemDatabase
+
 
 class Shop:
     def __init__(self, item_database, inventory_file='data/inventory.json'):
