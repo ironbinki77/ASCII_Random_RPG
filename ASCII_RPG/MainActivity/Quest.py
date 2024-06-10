@@ -1,5 +1,7 @@
 import json
 
+import json
+
 class Quest:
     def __init__(self, questNum, item_database):
         self.item_database = item_database

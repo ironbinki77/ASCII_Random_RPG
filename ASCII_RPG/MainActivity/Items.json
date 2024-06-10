@@ -1,4 +1,28 @@
 {
+    "1": {
+        "name": "Basic Sword",
+        "description": "A simple sword for beginners.",
+        "type": "Weapon",
+        "strengthPower": 3,
+        "buyPrice": 8,
+        "sellPrice": 4
+    },
+    "2": {
+        "name": "Basic Shield",
+        "description": "A simple shield for basic protection.",
+        "type": "Armor",
+        "defensePower": 3,
+        "buyPrice": 10,
+        "sellPrice": 5
+    },
+    "3": {
+        "name": "Healing Potion",
+        "description": "A potion that restores a small amount of health.",
+        "type": "Consumable",
+        "healthBoost": 20,
+        "buyPrice": 5,
+        "sellPrice": 2.5
+    },
     "4": {
         "name": "Advanced Shield",
         "description": "A better shield",

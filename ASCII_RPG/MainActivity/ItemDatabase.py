@@ -1,21 +1,34 @@
+import json
 from Item import Item
 
 class ItemDatabase:
-    def __init__(self):
+    def __init__(self, filename='Itemlist.json'):
+        self.filename = filename
         self.items = self.load_items()
 
     def load_items(self):
-        items = {
-            1: Item(name="Basic Sword", description="A simple sword", type="Weapon", strengthPower=5, buyPrice=10, sellPrice=5),
-            2: Item(name="Basic Shield", description="A simple shield", type="Armor", defensePower=5, buyPrice=15, sellPrice=7.5),
-            3: Item(name="Advanced Sword", description="A better sword", type="Weapon", strengthPower=10, buyPrice=30, sellPrice=15),
-            4: Item(name="Advanced Shield", description="A better shield", type="Armor", defensePower=10, buyPrice=35, sellPrice=17.5),
-            5: Item(name="Expert Sword", description="A high-quality sword", type="Weapon", strengthPower=15, buyPrice=50, sellPrice=25),
-            6: Item(name="Expert Shield", description="A high-quality shield", type="Armor", defensePower=15, buyPrice=55, sellPrice=27.5),
-            7: Item(name="Magic Wand", description="A wand for casting spells", type="Weapon", intelligencePower=20, buyPrice=60, sellPrice=30)
-            # Add more items as needed
-        }
-        return items
+        with open(self.filename, 'r', encoding='utf-8') as file:
+            data = json.load(file)
+            items = {}
+            for item_code, item_data in data.items():
+                item = Item(
+                    name=item_data['name'],
+                    description=item_data['description'],
+                    type=item_data['type'],
+                    healthPower=item_data.get('healthPower', 0),
+                    manaPower=item_data.get('manaPower', 0),
+                    strengthPower=item_data.get('strengthPower', 0),
+                    dexterityPower=item_data.get('dexterityPower', 0),
+                    intelligencePower=item_data.get('intelligencePower', 0),
+                    defensePower=item_data.get('defensePower', 0),
+                    luckPower=item_data.get('luckPower', 0),
+                    healthBoost=item_data.get('healthBoost', 0),
+                    manaBoost=item_data.get('manaBoost', 0),
+                    buyPrice=item_data['buyPrice'],
+                    sellPrice=item_data['sellPrice']
+                )
+                items[int(item_code)] = item
+            return items
 
     def get_item(self, item_code):
         return self.items.get(item_code, None)
