@@ -25,7 +25,8 @@
             <div id="village-map" class="game-map">
                 <!-- 마을 맵에 들어갈 요소 여기에 추가 -->
                 <div id="boundary"></div> <!-- 캐릭터의 움직임의 경계를 표현하는 div -->
-                <div id="shop_npc" class="npc block" style="top: 100px; left: -320px;">Shop</div>
+                <div id="house" class="block" style="top: -120px; left: -530px;">Shop</div>
+                <div id="shop_npc" class="npc block" style="top: 110px; left: -400px;">Shop_npc</div>
                 <div id="blacksmith" class="npc block" style="top: 20px; left: 450px;">blacksmith</div>
                 <div class="tile dungeon-portal" style="top: -320px; left: 0px;">Dungeon Portal</div>
                 <div id="guard" class="npc block" style="top: -250px; left: -140px;"></div>
@@ -124,6 +125,74 @@
             }
         }
 
+        // 마을의 경계에 위치한 나무들을 심는 과정
+        const villageMap = document.getElementById('village-map');
+
+        // 트리의 초기 위치와 간격 설정
+        const startTop = -550;
+        const startBottom = 250;
+        const startLeft = -840;
+        const endLeft = 720;
+        let minGap = 60;
+        let maxGap = 80;
+
+        // 고정된 위치에 트리 추가
+        const fixedPositions = [
+            {top: startTop, left: startLeft},
+            {top: startTop, left: endLeft},
+            {top: startBottom, left: startLeft},
+            {top: startBottom, left: endLeft}
+        ];
+
+        fixedPositions.forEach(position => {
+            const tree = document.createElement('div');
+            tree.className = 'tree';
+            tree.style.position = 'absolute';
+            tree.style.top = `${position.top}px`;
+            tree.style.left = `${position.left}px`;
+            villageMap.appendChild(tree);
+        });
+
+        // 나머지 트리 배치
+        function placeRowTrees(Row) {
+            let currentLeft = startLeft + Math.floor(Math.random() * (maxGap - minGap + 1)) + minGap;
+            while (currentLeft < endLeft) {
+                const tree = document.createElement('div');
+                tree.className = 'tree';
+                tree.style.position = 'absolute';
+                tree.style.top = `${Row}px`;
+                tree.style.left = `${currentLeft}px`;
+                villageMap.appendChild(tree);
+
+                // 다음 트리 위치 설정
+                currentLeft += Math.floor(Math.random() * (maxGap - minGap + 1)) + minGap;
+            }
+        }
+
+        function placeColumnTrees(Column) {
+            let currentTop = startTop + Math.floor(Math.random() * (maxGap - minGap + 1)) + minGap;
+            while (currentTop < startBottom) {
+                const tree = document.createElement('div');
+                tree.className = 'tree';
+                tree.style.position = 'absolute';
+                tree.style.top = `${currentTop}px`;
+                tree.style.left = `${Column}px`;
+                villageMap.appendChild(tree);
+
+                // 다음 트리 위치 설정
+                currentTop += Math.floor(Math.random() * (maxGap - minGap + 1)) + minGap;
+            }
+        }
+
+        // 상단에 트리 배치
+        placeRowTrees(startTop);
+        // 하단에 트리 배치
+        placeRowTrees(startBottom);
+        // 좌단에 트리 배치
+        placeColumnTrees(startLeft);
+        // 우단에 트리 배치
+        placeColumnTrees(endLeft);
+
         // 캐릭터와 shop_npc, blacksmith 충돌 시 해당 메뉴 표시
         function checkCollisionWithNPCs() {
             const characterRect = character.getBoundingClientRect();
@@ -161,7 +230,6 @@
 
         // 캐릭터 움직임과 맵 변환을 위한 자바스크립트
         let character = document.getElementById('character');
-        const villageMap = document.getElementById('village-map');
         const dungeonMap = document.getElementById('dungeon-map');
         const dungeonPortals = document.querySelectorAll('.dungeon-portal');
         let currentMap = villageMap;
