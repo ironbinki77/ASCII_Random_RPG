@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <h1>ASCII_RPG</h1>
+        <h2>ASCII_RPG</h2>
         <nav>
             <ul>
                 <li><a href="#" id="home">Home</a></li>
@@ -25,17 +25,17 @@
             <div id="village-map" class="game-map">
                 <!-- 마을 맵에 들어갈 요소 여기에 추가 -->
                 <div id="boundary"></div> <!-- 캐릭터의 움직임의 경계를 표현하는 div -->
-                <div id="house" class="block" style="top: -120px; left: -530px;">Shop</div>
-                <div id="shop_npc" class="npc block" style="top: 110px; left: -400px;">Shop_npc</div>
-                <div id="blacksmith" class="npc block" style="top: 20px; left: 450px;">blacksmith</div>
-                <div class="tile dungeon-portal" style="top: -320px; left: 0px;">Dungeon Portal</div>
-                <div id="guard" class="npc block" style="top: -250px; left: -140px;"></div>
-                <div id="guard" class="npc block" style="top: -250px; left: 140px;"></div>
+                <div id="house" class="block" style="top: -120px; left: -530px;"></div>
+                <div id="shop_npc" class="npc block" style="top: 110px; left: -400px;"></div>
+                <div id="blacksmith" class="npc block" style="top: 20px; left: 450px;"></div>
+                <div id="portal" class="dungeon-portal" style="top: -320px; left: -40px;"></div>
+                <div id="guard" class="npc block" style="top: -220px; left: -140px;"></div>
+                <div id="guard" class="npc block" style="top: -220px; left: 140px;"></div>
             </div>
             <div id="character"></div>
             <div id="dungeon-map" class="game-map" style="display:none;">
                 <!-- 던전 맵에 들어갈 요소 여기에 추가 -->
-                <div class="tile dungeon-portal" style="top: -200px; left: 0px;">Dungeon Portal</div>
+                <div id="portal" class="dungeon-portal" style="top: -200px; left: 0px;"></div>
             </div>
             <div class="status-bars">
                 <div class="status-bar">
@@ -72,9 +72,6 @@
             <p>방향키: 이동 / 스페이스 키: 창 종료</p>
         </div>
     </div>
-    <footer>
-        <p>&copy; 2024 RPG Game</p>
-    </footer>
 
     <script>
         // 상단 메뉴와 관련된 자바 스크립트
@@ -129,8 +126,8 @@
         const villageMap = document.getElementById('village-map');
 
         // 트리의 초기 위치와 간격 설정
-        const startTop = -550;
-        const startBottom = 250;
+        const startTop = -620;
+        const startBottom = 350;
         const startLeft = -840;
         const endLeft = 720;
         let minGap = 60;
