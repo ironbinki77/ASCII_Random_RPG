@@ -1,6 +1,6 @@
 import json
 
-class Items:
+class Item:
     def __init__(self, item_code, name, description, item_type, stats=None, boosts=None, isEquipped=False, enhancementLevel=0, buyPrice=0, sellPrice=0):
         self.item_code = item_code
         self.name = name
@@ -28,6 +28,7 @@ class Items:
         self.stats['intelligencePower'] += 2
         self.stats['defensePower'] += 2
         self.stats['luckPower'] += 1
+
 
 class ItemDatabase:
     def __init__(self, filename='items.json'):

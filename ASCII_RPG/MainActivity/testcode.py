@@ -1,4 +1,7 @@
-from MainActivity.Items import ItemDatabase
+from __future__ import absolute_import
+
+
+from .Item import Item
 from .Character import Character
 from .Shop import Shop
 from .Inventory import Inventory

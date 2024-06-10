@@ -1,7 +1,6 @@
 import json
-
 class Inventory:
-    def __init__(self, filename='inventory.json'):
+    def __init__(self, filename='data/inventory.json'):
         self.filename = filename
         self.items = self.load_inventory()
 
@@ -10,29 +9,23 @@ class Inventory:
             with open(self.filename, 'r', encoding='utf-8') as file:
                 return json.load(file)
         except FileNotFoundError:
-            return {}
+            return []
 
     def save_inventory(self):
         with open(self.filename, 'w', encoding='utf-8') as file:
-            json.dump(self.items, file)
+            json.dump(self.items, file, indent=4)
 
     def add_item(self, item_code):
-        if item_code in self.items:
-            self.items[item_code] += 1
-        else:
-            self.items[item_code] = 1
+        self.items.append(item_code)
         self.save_inventory()
 
     def remove_item(self, item_code):
         if item_code in self.items:
-            if self.items[item_code] > 1:
-                self.items[item_code] -= 1
-            else:
-                del self.items[item_code]
+            self.items.remove(item_code)
             self.save_inventory()
-
-    def get_item_count(self, item_code):
-        return self.items.get(item_code, 0)
 
     def list_items(self):
         return self.items
+
+    def get_item_count(self, item_code):
+        return self.items.count(item_code)
