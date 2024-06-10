@@ -1,4 +1,4 @@
-from .Inventory import Inventory
+from Inventory import Inventory
 
 class Character:
     def __init__(self, name, level=1, gold=0, currentXp=0, xpToNextLevel=100, health=100, maxHealth=100, mana=50, maxMana=50, strength=10, dexterity=10, intelligence=10, defense=10, luck=5):
@@ -49,11 +49,11 @@ class Character:
 
     def removeItemFromInventory(self, item):
         self.inventory.remove_item(item.item_code)
-    
+
     def apply_boosts(self, boosts):
-        self.health += boosts.get('healthBoost', 0)
+        self.health += boosts['healthBoost']
         if self.health > self.maxHealth:
             self.health = self.maxHealth
-        self.mana += boosts.get('manaBoost', 0)
+        self.mana += boosts['manaBoost']
         if self.mana > self.maxMana:
             self.mana = self.maxMana

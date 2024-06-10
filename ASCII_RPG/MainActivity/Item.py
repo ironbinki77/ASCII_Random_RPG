@@ -29,7 +29,6 @@ class Item:
         self.stats['defensePower'] += 2
         self.stats['luckPower'] += 1
 
-
 class ItemDatabase:
     def __init__(self, filename='items.json'):
         self.filename = filename
