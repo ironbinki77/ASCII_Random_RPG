@@ -1,0 +1,42 @@
+                 ddddd      ddddddddddddd                       
+               dx 000xl dddx 00000000000kdddd                   
+             dx 0XNNXx:l 0 0KXXXXXK0KKXXK0   xd                 
+            xk0XNNNNXd'cKXXXXXXNN  cc  XXXXK0 kd                
+            x KNNXNNXd'cKXXXXXXNN cclll kKXKK0 d                
+            x KXNXXXX 'cKNXXXXXNNK xlc::xKKKK0 d                
+            x 0XXXXNX .:KNXXXXXXXXNX kxd KKXK0 x                
+            x 0XXXXNXkcdKXXXXXXXNXKKKK0 000KK0 x                
+            x 0XXXXXXK00XXXXKXKKKkl k      00kxd                
+            x 0XXXXKK0 0KKKKKK0  d;:k kdk  kxd                  
+            x 0XXXKKK0 0KKKKKK0     K0l,l kd                    
+            x 0KKKKKK0 0KKKKKK0    0XXc.c k                     
+            x 0KKKKKK0 0KKKKKK0   k XXc.c kd                    
+             dx 0KKKK0 0KKKK00    kk  xdk kd                    
+              x 0KKKKKK0000 kdxxxxxxxxxdddd                     
+              x  KKKKK0 xx 0 kkkkkkkkkkkx                       
+            dxk00KKK0 xxk KXXXXKXK     0 kx                     
+            x 0KKKK0 x x0KNNNWWNNNK00   0XKkx                   
+            x 0KKK0 kx x0KNNNNNNNNNNXK00XNXK0d                  
+            xk 00 kd   x0KNNWNNNNNNNNNNNNNXK0d                  
+              dkkd     x KXNNNNNNNNNNNNNNNX0 d                  
+               dd      dxk 0XNNNNNXXXXK000 dd                   
+                       ddx  00 kkxdddd:;cdd                     
+                       ddx    kxxd lll,.:                       
+                       lclxkxkl;;;,,,,::::c                     
+                     l:c:c d  c:;;;;;:c lcccc                   
+                   ccc:cllllllllllllllllllc;:l                  
+                 lc::cllllllllllllllllll  l;:l                  
+                l:;l                    dx ;;l                  
+                l:: dd dxxxxd dxxxddxkxxxd ::l                  
+                   c;;'; dd :':  l;cdkk dcclll                  
+                   ll;.';::;,,,'',;;,;d kx ,,c                  
+                  lc:;,,'''''''..';;'';ccc:,,,,c                
+              lc:::;;;;,,,,,,,,,,,;;,,'''''''.';:::c            
+              c;;;;;;;;;;;;;;;;;;;;;;;,,,,,,,,,,;;;:l           
+              lccc:;;;;;;;;;;;;;;;;;;;;;;;;;;;;:cccc            
+                   cc:::;;;;;;;;;;;;;;;;;;;:::cl                
+                       l::::::::::::::::::cl                    
+                                                                
+                                                                
+
+
