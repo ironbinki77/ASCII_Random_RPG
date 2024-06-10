@@ -7,25 +7,25 @@
     },
     "2": {
         "name": "Collect Herbs",
-        "description": "Collect 5 Healing Herbs",
+        "description": "Collect 5 Healing potions",
         "requirements": ["ItemCollected", 2, 5],
         "reward": [20, 50, [[2, 5]]]
     },
     "3": {
-        "name": "Story Quest",
-        "description": "Complete the story mission",
-        "requirements": ["Story", 0, 0],
+        "name": "shop Quest",
+        "description": "visit the shop mission",
+        "requirements": ["shop", 0, 0],
         "reward": [50, 200, []]
     },
     "4": {
-        "name": "Dragon Slayer",
-        "description": "Defeat the mighty dragon that terrorizes the kingdom.",
-        "requirements": ["MonsterKill", "dragon", 1],
+        "name": "Orc Slayer",
+        "description": "Defeat the mighty orc that terrorizes the jungle.",
+        "requirements": ["MonsterKill", "orc", 1],
         "reward": [500, 150, [[7, 1], [14, 5]]]
     },
     "5": {
-        "name": "The Lost Artifact",
-        "description": "Find the ancient artifact lost in the old ruins.",
+        "name": "The Lost shield",
+        "description": "Find the shield lost in the old ruins.",
         "requirements": ["ItemCollected", "ancient_artifact", 1],
         "reward": [300, 100, [[19, 100], [14, 2]]]
     },
