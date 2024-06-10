@@ -1,40 +1,42 @@
-from Item import ItemDatabase
-from Character import Character
+import json
+from .Character import Character
+from .Inventory import Inventory
+from .Item import ItemDatabase
 
 class Shop:
-    def __init__(self, item_database, inventory_file='inventory.json'):
+    def __init__(self, item_database, inventory_file='data/inventory.json'):
         self.item_database = item_database
-        self.inventory = Inventory(filename=inventory_file)
+        self.inventory_file = inventory_file
+        self.inventory = self.load_inventory()
+
+    def load_inventory(self):
+        try:
+            with open(self.inventory_file, 'r', encoding='utf-8') as file:
+                return json.load(file)
+        except FileNotFoundError:
+            return {}
+
+    def save_inventory(self):
+        with open(self.inventory_file, 'w', encoding='utf-8') as file:
+            json.dump(self.inventory, file)
+
+    def list_items(self):
+        return self.item_database.items
 
     def buy_item(self, character, item_code):
         item = self.item_database.get_item(item_code)
         if item and character.gold >= item.buyPrice:
             character.gold -= item.buyPrice
             character.addItemToInventory(item)
-            print(f"{character.name} bought {item.name} for {item.buyPrice} gold.")
-        else:
-            print(f"{character.name} does not have enough gold to buy {item.name}.")
+            self.save_inventory()
+            return True
+        return False
 
     def sell_item(self, character, item_code):
         item = self.item_database.get_item(item_code)
         if item and character.get_item_count(item_code) > 0:
             character.gold += item.sellPrice
             character.removeItemFromInventory(item)
-            print(f"{character.name} sold {item.name} for {item.sellPrice} gold.")
-        else:
-            print(f"{character.name} does not have {item.name} in inventory to sell.")
-
-if __name__ == "__main__":
-    item_db = ItemDatabase('items.json')
-    shop = Shop(item_db, 'inventory.json')
-
-    # Initialize character
-    character = Character(name="Hero", gold=100)
-
-    # Buy and sell items
-    shop.buy_item(character, 1)  # Attempt to buy Basic Sword
-    shop.sell_item(character, 1)  # Attempt to sell Basic Sword
-
-    # Check character's gold and inventory
-    print(f"{character.name} has {character.gold} gold.")
-    print(f"{character.name}'s inventory: {character.inventory.list_items()}")
+            self.save_inventory()
+            return True
+        return False

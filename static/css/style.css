@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: 'Consolas', monospace;
+    font-family: 'Press Start 2P', system-ui, sans-serif;
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -12,6 +12,9 @@ header {
     color: white;
     text-align: center;
     padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 nav ul {
@@ -20,6 +23,7 @@ nav ul {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin: 0;
 }
 
 nav li {
