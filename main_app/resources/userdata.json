@@ -1,0 +1,18 @@
+{
+  "name": "Character",
+  "level": 1,
+  "gold": 500,
+  "xp": 0,
+  "hp": 100,
+  "max_hp": 100,
+  "mp": 30,
+  "max_mp": 30,
+  "str": 5,
+  "dex": 5,
+  "int": 5,
+  "def": 5,
+  "luk": 5,
+  "skills": [],
+  "inven": [],
+  "equip": []
+}

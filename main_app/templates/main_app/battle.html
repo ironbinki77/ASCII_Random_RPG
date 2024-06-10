@@ -1,23 +1,75 @@
-<!-- main_app/templates/main_app/battle.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Battle</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <div id="message">{{ message }}</div>
+    <header>
+        <h1>Battle</h1>
+    </header>
 
-    {% if show_menu %}
-    <div id="battle-menu">
-        <form method="post" action="{% url 'battle_view' %}">
-            {% csrf_token %}
-            <button type="submit" name="action" value="attack">Attack</button>
-            <button type="submit" name="action" value="defend">Defend</button>
-            <button type="submit" name="action" value="item">Item</button>
-            <button type="submit" name="action" value="run">Run</button>
-        </form>
+    <div class="game-container">
+        <div class="game-screen">
+            <div id="battle-info">
+                <h2 id="enemy-name">{{ enemy_name }}</h2>
+                <p>Enemy HP: <span id="enemy-hp">{{ enemy_hp }}</span></p>
+                <p>Player HP: <span id="player-hp">{{ player_hp }}</span></p>
+                <div id="message">{{ message }}</div>
+            </div>
+
+            <div id="battle-menu" {% if not show_menu %}style="display:none"{% endif %}>
+                <form id="battle-form">
+                    <button type="button" class="battle-button" onclick="sendAction('attack')">Attack</button>
+                    <button type="button" class="battle-button" onclick="sendAction('defend')">Defend</button>
+                    <button type="button" class="battle-button" onclick="sendAction('item')">Item</button>
+                    <button type="button" class="battle-button" onclick="sendAction('run')">Run</button>
+                </form>
+            </div>
+
+            <div id="combat-end" {% if show_menu %}style="display:none"{% endif %}>
+                <p>Combat has ended. Press enter to return to the main screen.</p>
+                <button type="button" onclick="returnToMain()">Enter</button>
+            </div>
+        </div>
     </div>
-    {% endif %}
+
+    <footer>
+        <p>&copy; 2024 RPG Game</p>
+    </footer>
+
+    <script>
+        function sendAction(action) {
+            $.ajax({
+                url: "{% url 'battle_view' %}",
+                method: 'POST',
+                data: {
+                    action: action,
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+                success: function(data) {
+                    $('#message').text(data.message);
+                    $('#player-hp').text(data.player_hp);
+                    $('#enemy-hp').text(data.enemy_hp);
+                    $('#enemy-name').text(data.enemy_name);
+                    if (data.show_menu) {
+                        $('#battle-menu').show();
+                        $('#combat-end').hide();
+                    } else {
+                        $('#battle-menu').hide();
+                        $('#combat-end').show();
+                    }
+                }
+            });
+        }
+
+        function returnToMain() {
+            window.location.href = "{% url 'main' %}";
+        }
+    </script>
 </body>
 </html>

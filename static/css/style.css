@@ -142,3 +142,27 @@ footer {
         height: 80%;
     }
 }
+
+/* Additional styles for battle screen */
+#battle-info {
+    text-align: center;
+}
+
+#battle-menu {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#battle-menu button {
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#battle-menu button:hover {
+    background-color: #2980b9;
+}

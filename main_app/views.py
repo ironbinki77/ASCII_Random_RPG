@@ -1,66 +1,111 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from ASCII_RPG.MainActivity import Battle, Character, monster
-import random
+from django.shortcuts import render, redirect
+from django.http import JsonResponse
+from ASCII_RPG.MainActivity.Character import Character
+from ASCII_RPG.MainActivity.Monster import Monster
+from ASCII_RPG.MainActivity.Battle import Battle
 
-# Create your views here.
-
-mob_list = [
-    monster.monster("Slime", 3, 30, 4, 3, 5, [1], 0.1),
-    monster.monster("Zombie", 2, 20, 3, 1, 3, [2], 0.4),
-    monster.monster("Goblin", 5, 50, 12, 5, 10, [], 0),
-    monster.monster("Skeleton", 3, 25, 7, 1, 7, [], 0),
-    monster.monster("Creeper", 1, 10, 20, 0, 5, [], 0)
-]
 
 def main(request):
     return render(request, 'main_app/main.html')
 
 
-def battle_view(request):
-    player_o = Character.Character("Player")
-    mob_num = int(5 * random.random())
-    enemy_o = mob_list[mob_num]
-
-    battle = Battle.Battle(player_o, enemy_o)
-
-    # 세션을 사용하여 battle 객체를 저장하고 관리할 수 있습니다.
-    if 'battle' not in request.session:
-        request.session['battle'] = battle.__dict__  # 객체 상태를 세션에 저장
+def start_battle(request):
+    if 'battle_c_name' not in request.session:
+        battle = Battle()
+        save_battle_to_session(request, battle)
     else:
-        battle.__dict__.update(request.session['battle'])  # 세션에서 객체 상태 복원
+        battle = load_battle_from_session(request)
 
-    battle.message = "적" + enemy_o.name + "이 나타났습니다!"
+    return battle
 
+
+def battle_view(request):
     if request.method == 'POST':
         action = request.POST.get('action')
-        if action:
-            if action == 'attack':
-                battle.message = "공격합니다!"
-                if player_o.strength - 0.6 * enemy_o.defense > 0:
-                    enemy_o.health = enemy_o.health - (player_o.strength - 0.6 * enemy_o.defense)
-            elif action == 'defend':
-                battle.message = "방어 태세에 들어갑니다!"
-                battle.character_status = 1
-            elif action == 'item':
-                battle.message = "아이템을 사용합니다!"
-            elif action == 'run':
-                battle.message = "도망쳤습니다!"
-                battle.combatFinished = True
-            battle.count += 1  # 턴 증가
-        else:
-            battle.message = battle.next_turn()
-    else:
-        battle.message = battle.next_turn()
+        battle = load_battle_from_session(request)
+        battle.player_turn(action)
+        save_battle_to_session(request, battle)
 
-    # 세션에 battle 객체 상태를 업데이트합니다.
-    if not battle.combatFinished:
-        request.session['battle'] = battle.to_object()
-    else:
-        return render(request, 'main_app/main.html')
+        return JsonResponse({
+            'message': battle.message,
+            'player_hp': battle.character.hp,
+            'enemy_hp': battle.monster.hp,
+            'enemy_name': battle.monster.name,
+            'show_menu': not battle.combatFinished
+        })
 
-    context = {
+    if 'battle_c_name' not in request.session:
+        start_battle(request)
+
+    battle = load_battle_from_session(request)
+    return render(request, 'main_app/battle.html', {
         'message': battle.message,
-        'show_menu': battle.count != 0  # self.count가 0이 아닌 경우에만 메뉴 표시
-    }
-    return render(request, 'main_app/battle.html', context)
+        'player_hp': battle.character.hp,
+        'enemy_hp': battle.monster.hp,
+        'enemy_name': battle.monster.name,
+        'show_menu': not battle.combatFinished
+    })
+
+
+def save_battle_to_session(request, battle):
+    request.session['battle_c_name'] = battle.character.name
+    request.session['battle_c_level'] = battle.character.level
+    request.session['battle_c_gold'] = battle.character.gold
+    request.session['battle_c_xp'] = battle.character.xp
+    request.session['battle_c_hp'] = battle.character.hp
+    request.session['battle_c_max_hp'] = battle.character.max_hp
+    request.session['battle_c_mp'] = battle.character.mp
+    request.session['battle_c_max_mp'] = battle.character.max_mp
+    request.session['battle_c_str'] = battle.character.str
+    request.session['battle_c_dex'] = battle.character.dex
+    request.session['battle_c_int'] = battle.character.int
+    request.session['battle_c_def'] = battle.character.def_s
+    request.session['battle_c_luk'] = battle.character.luk
+    request.session['battle_c_skills'] = battle.character.skills
+    request.session['battle_c_inven'] = battle.character.inven
+    request.session['battle_c_equip'] = battle.character.equip
+    request.session['battle_m_name'] = battle.monster.name
+    request.session['battle_m_level'] = battle.monster.level
+    request.session['battle_m_hp'] = battle.monster.hp
+    request.session['battle_m_max_hp'] = battle.monster.max_hp
+    request.session['battle_m_atk'] = battle.monster.atk
+    request.session['battle_m_def'] = battle.monster.def_s
+    request.session['battle_m_gold'] = battle.monster.gold
+    request.session['battle_m_loot'] = battle.monster.loot
+    request.session['battle_m_rate'] = battle.monster.rate
+    request.session['battle_turn'] = battle.turn
+    request.session['battle_combatFinished'] = battle.combatFinished
+    request.session['battle_message'] = battle.message
+
+
+def load_battle_from_session(request):
+    battle = Battle()
+    battle.character.name = request.session['battle_c_name']
+    battle.character.level = request.session['battle_c_level']
+    battle.character.gold = request.session['battle_c_gold']
+    battle.character.xp = request.session['battle_c_xp']
+    battle.character.hp = request.session['battle_c_hp']
+    battle.character.max_hp = request.session['battle_c_max_hp']
+    battle.character.mp = request.session['battle_c_mp']
+    battle.character.max_mp = request.session['battle_c_max_mp']
+    battle.character.str = request.session['battle_c_str']
+    battle.character.dex = request.session['battle_c_dex']
+    battle.character.int = request.session['battle_c_int']
+    battle.character.def_s = request.session['battle_c_def']
+    battle.character.luk = request.session['battle_c_luk']
+    battle.character.skills = request.session['battle_c_skills']
+    battle.character.inven = request.session['battle_c_inven']
+    battle.character.equip = request.session['battle_c_equip']
+    battle.monster.name = request.session['battle_m_name']
+    battle.monster.level = request.session['battle_m_level']
+    battle.monster.hp = request.session['battle_m_hp']
+    battle.monster.max_hp = request.session['battle_m_max_hp']
+    battle.monster.atk = request.session['battle_m_atk']
+    battle.monster.def_s = request.session['battle_m_def']
+    battle.monster.gold = request.session['battle_m_gold']
+    battle.monster.loot = request.session['battle_m_loot']
+    battle.monster.rate = request.session['battle_m_rate']
+    battle.turn = request.session['battle_turn']
+    battle.combatFinished = request.session['battle_combatFinished']
+    battle.message = request.session['battle_message']
+    return battle
