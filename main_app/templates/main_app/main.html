@@ -441,6 +441,12 @@
                     (collisionDirection === 'right' && e.key === 'ArrowLeft')) {
                     collisionDirection = null; // 충돌 상태 해제
                 }
+            }
+
+            // 던전 맵에서 랜덤 확률로 배틀 페이지로 이동
+            if (currentMap === dungeonMap && Math.random() < 0.03) { // 3% 확률로 이동
+                window.location.href = 'http://127.0.0.1:8000/battle';
+                return; // 이동 후에는 더 이상 위치 업데이트를 진행하지 않음
             }   
 
             if (e.code === 'Space') {
