@@ -221,6 +221,24 @@ footer {
     padding: 1em;
 }
 
+#shop-list {
+    list-style: none;
+    padding: 0;
+}
+
+#shop-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+#shop-list img {
+    margin-right: 1em;
+    width: 50px;  /* Adjust the width as needed */
+    height: 50px; /* Adjust the height as needed */
+}
+
+
 /* Media Queries */
 @media (max-width: 768px) {
     nav ul {
@@ -242,6 +260,7 @@ footer {
         font-size: 12px; /* 작은 화면에서의 폰트 크기 조정 */
     }
 }
+
 
 @media (max-width: 480px) {
     nav ul {
