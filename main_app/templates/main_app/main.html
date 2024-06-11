@@ -197,6 +197,66 @@
         // 우단에 트리 배치
         placeColumnTrees(endLeft);
 
+        // 풀과 돌을 랜덤하게 배치하는 함수
+        function placeRandomElements(mapElement, elementClass, count, isBlock = false) {
+            const portalTop = -200;
+            const portalLeft = 0;
+            const elementWidth = 40;
+            const elementHeight = 40;
+        
+            // 각 요소의 영역 크기 계산
+            const totalAreaWidth = 1600;  // 전체 너비
+            const totalAreaHeight = 1200; // 전체 높이
+            const elementArea = (totalAreaWidth * totalAreaHeight) / count;
+            const elementRegionWidth = Math.sqrt(elementArea);
+            const elementRegionHeight = Math.sqrt(elementArea);
+        
+            const placedElements = [];
+        
+            for (let i = 0; i < count; i++) {
+                let element;
+                let top, left;
+                let regionTopMin, regionTopMax, regionLeftMin, regionLeftMax;
+        
+                do {
+                    // 고유 영역의 위치 설정
+                    regionTopMin = portalTop - totalAreaHeight / 2 + (i % Math.sqrt(count)) * elementRegionHeight;
+                    regionTopMax = regionTopMin + elementRegionHeight;
+                    regionLeftMin = portalLeft - totalAreaWidth / 2 + Math.floor(i / Math.sqrt(count)) * elementRegionWidth;
+                    regionLeftMax = regionLeftMin + elementRegionWidth;
+        
+                    // 요소의 랜덤 위치 설정
+                    top = Math.floor(Math.random() * (regionTopMax - regionTopMin)) + regionTopMin;
+                    left = Math.floor(Math.random() * (regionLeftMax - regionLeftMin)) + regionLeftMin;
+                    element = { top, left };
+        
+                } while (
+                    placedElements.some(e => e.top === element.top && e.left === element.left) ||
+                    (top > portalTop - 30 && top < portalTop + 30 && left > portalLeft - 40 && left < portalLeft + 40)
+                );
+        
+                placedElements.push(element);
+        
+                const div = document.createElement('div');
+                div.className = elementClass;
+                div.style.position = 'absolute';
+                div.style.top = `${element.top}px`;
+                div.style.left = `${element.left}px`;
+        
+                if (isBlock) {
+                    div.classList.add('block');
+                }
+        
+                mapElement.appendChild(div);
+            }
+        }
+        // 던전 맵 요소 가져오기
+        const dungeonMap = document.getElementById('dungeon-map');
+
+        // 풀 50개와 돌 20개 배치
+        placeRandomElements(dungeonMap, 'grass', 140);
+        placeRandomElements(dungeonMap, 'rock', 20, true);
+
         // 캐릭터와 shop_npc, blacksmith 충돌 시 해당 메뉴 표시
         function checkCollisionWithNPCs() {
             const characterRect = character.getBoundingClientRect();
@@ -234,7 +294,7 @@
 
         // 캐릭터 움직임과 맵 변환을 위한 자바스크립트
         let character = document.getElementById('character');
-        const dungeonMap = document.getElementById('dungeon-map');
+        //const dungeonMap = document.getElementById('dungeon-map');
         const dungeonPortals = document.querySelectorAll('.dungeon-portal');
         let currentMap = villageMap;
         let mapPosition = { top: 0, left: 0 };

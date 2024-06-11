@@ -143,6 +143,26 @@ nav a {
     z-index: 10;
 }
 
+.grass {
+    width: 30px;
+    height: 30px;
+    background-image: url('/static/ascii_lib/environment/grass.png'); /* 풀 이미지 파일 경로 */
+    background-size: contain; 
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+}
+
+.rock {
+    width: 30px;
+    height: 30px;
+    background-image: url('/static/ascii_lib/environment/rock.png'); /* 돌 이미지 파일 경로 */
+    background-size: contain; 
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+}
+
 .tile {
     position: absolute;
     background-color: green;
