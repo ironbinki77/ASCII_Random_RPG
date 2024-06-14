@@ -51,7 +51,7 @@ Copy code
 2. **Navigate to the Project Directory**:
 
     ```sh
-    cd /Users/seungwonlee/ASCII_Random_RPG
+    cd /Users/ASCII_Random_RPG
     ```
 
 3. **Apply Migrations**:
