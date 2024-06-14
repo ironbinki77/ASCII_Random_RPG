@@ -1,6 +1,6 @@
 README.md
 markdown
-Copy code
+
 # ASCII Random RPG
 
 This project is an ASCII-based RPG game that integrates a Django server for backend management and a web-based drawing application for visualizing different ASCII art. The project is organized into several modules with object-oriented programming principles.
@@ -35,8 +35,6 @@ ASCII_Random_RPG/
 ├── manage.py
 ├── static/
 
-python
-Copy code
 
 ## Setup Instructions
 
